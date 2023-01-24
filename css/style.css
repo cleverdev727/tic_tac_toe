@@ -1,0 +1,167 @@
+body.page1 {
+  background-image: url("../img/wallpaper2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+}
+h1{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 30px;
+  font-family: 'Bungee Spice', cursive;
+  font-size: 72px;
+  background: -webkit-linear-gradient(#2EDEFF, #05F583);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+}
+/* says where to get the blink8*/
+@-webkit-keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.0;}
+}
+.btn-group button {
+  /* blink effect*/
+  text-decoration: blink;
+  -webkit-animation-name: blinker;
+	-webkit-animation-duration: 0.6s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:ease-in-out;
+	-webkit-animation-direction: alternate;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 30px;
+  border: none;
+  text-align: center;
+  font-size: 50px;
+  cursor: pointer;/*pointer/hand icon*/
+  width: 50%;
+  display: block;/*make buttons apear under eachother*/
+  font-family: 'Bungee Spice', cursive;
+  background: -webkit-linear-gradient(#F000FF, #98FF00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* add a background color on hover */
+.btn-group button:hover {
+  background-image: linear-gradient(#2EDEFF, #05F583);
+}
+/*------------------------TictacToe----------------------------*/
+body.TicTacToe{
+    background-image: url("../img/wallpaper1.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+}
+:root {
+    --cell-size: 100px;
+    --color: #06003f; /* for hover*/
+    --color-set: #1a0040;/* when set*/
+    --1:10px;/*X line-width*/
+}
+/* creates the 9 colum cells */
+.board {
+  width:100vw;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto);
+}
+/*how cells will look*/
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+/*remove border edges*/
+.cell:nth-child(1), .cell:nth-child(2), .cell:nth-child(3){
+    border-top: none;
+}
+
+.cell:nth-child(1), .cell:nth-child(4), .cell:nth-child(7){
+    border-left: none;
+}
+
+.cell:nth-child(3), .cell:nth-child(6), .cell:nth-child(9){
+    border-right: none;
+}
+
+.cell:nth-child(7), .cell:nth-child(8), .cell:nth-child(9){
+    border-bottom: none;
+}
+/* determine that ther is no hover effect if the cell is already filled*/
+.cell.x, .cell.circle {
+    cursor: not-allowed;
+}
+/* for cross */
+.board.x .cell:not(.circle):not(.x):hover {
+	background-image: url("../img/x.png");
+	background-size: 80% 80%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+/* for cross (set) */
+.cell:not(.circle).x {
+	background-image: url("../img/x.png");
+	background-size: 80% 80%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+/* for circle*/
+.board.circle .cell:not(.circle):not(.x):hover {
+    background-image: url("../img/0.png");
+    background-size: 80% 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+/* for cirlce(set)*/
+.cell:not(.x).circle {
+  background-image: url("../img/0.png");
+  background-size: 80% 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/*winning botton settings*/
+.winning-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-set);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+    font-family: 'Courier New',Courier, monospace;
+    flex-direction: column;
+}
+/*button with the hovering effect*/
+.winning-message button {
+    border-radius: 10px;
+    font-size: 3rem;
+    background-color: white;
+    border: 1px solid var(--color-set);
+    padding: .25em .5em;
+    cursor: pointer;
+}
+
+.winning-message button:hover {
+    background-color: var(--color-set)
+    color: white;
+    border-color: white;
+}
+/* how elements are drawn in message*/
+.winning-message.show {
+    display: flex;
+}
